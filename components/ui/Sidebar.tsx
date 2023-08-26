@@ -1,3 +1,4 @@
+import { useContext, useReducer } from 'react';
 import {
  Box,
  Divider,
@@ -11,19 +12,15 @@ import {
 
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
-import { useState } from 'react';
+import { UiContext } from '@/context/ui';
 
 const menuItems: string[] = ['Inbox', 'Starred', 'Send Email', 'Drafts'];
 
 export const Sidebar = () => {
- const [open, setOpen] = useState(true);
-
- const handlerMenu = () => {
-  setOpen(!open);
- };
+ const { openMenu, handlerCloseMenu } = useContext(UiContext);
 
  return (
-  <Drawer anchor='left' open={open} onClose={handlerMenu}>
+  <Drawer anchor='left' open={openMenu} onClose={handlerCloseMenu}>
    <Box sx={{ width: 250 }}>
     <Box sx={{ padding: '5px 10px' }}>
      <Typography variant='h4'>Menu</Typography>
