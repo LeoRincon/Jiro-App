@@ -9,7 +9,7 @@ export const Navbar = () => {
      <MenuOutlinedIcon />
     </IconButton>
 
-    <Typography variant='h6'>OpenJira</Typography>
+    <Typography variant='h5'>Jiro</Typography>
    </Toolbar>
   </AppBar>
  );
