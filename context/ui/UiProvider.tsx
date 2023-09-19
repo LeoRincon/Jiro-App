@@ -1,6 +1,5 @@
 import { FC, useReducer } from 'react';
 import { UiContext, uiReducer } from '.';
-import handler from '../../pages/api/hello';
 
 export interface UiState {
  openMenu: boolean;
@@ -29,18 +28,17 @@ export const UiProvider: FC<UiProviderProps> = ({ children }) => {
   dispatch({ type: 'UI-closeMenu' });
  };
 
-    const setIsAddingEntry = (isAdding: boolean) => {
-     dispatch({ type: 'UI - Set isAddingEntry', payload: isAdding });
-    };
+ const setIsAddingEntry = (isAdding: boolean) => {
+  dispatch({ type: 'UI - Set isAddingEntry', payload: isAdding });
+ };
 
-    const startDragging = () => {
-     dispatch({ type: 'UI - Start Dragging' });
-    };
+ const startDragging = () => {
+  dispatch({ type: 'UI - Start Dragging' });
+ };
 
-    const endDragging = () => {
-     dispatch({ type: 'UI - End Dragging' });
-    };
-
+ const endDragging = () => {
+  dispatch({ type: 'UI - End Dragging' });
+ };
 
  return (
   <UiContext.Provider
