@@ -4,6 +4,8 @@ import handler from '../../pages/api/hello';
 
 export interface UiState {
  openMenu: boolean;
+ isAddingEntry: boolean;
+ isDragging: boolean;
 }
 
 interface UiProviderProps {
@@ -12,6 +14,8 @@ interface UiProviderProps {
 
 export const INITIAL_STATE: UiState = {
  openMenu: false,
+ isAddingEntry: false,
+ isDragging: false,
 };
 
 export const UiProvider: FC<UiProviderProps> = ({ children }) => {
@@ -25,8 +29,31 @@ export const UiProvider: FC<UiProviderProps> = ({ children }) => {
   dispatch({ type: 'UI-closeMenu' });
  };
 
+    const setIsAddingEntry = (isAdding: boolean) => {
+     dispatch({ type: 'UI - Set isAddingEntry', payload: isAdding });
+    };
+
+    const startDragging = () => {
+     dispatch({ type: 'UI - Start Dragging' });
+    };
+
+    const endDragging = () => {
+     dispatch({ type: 'UI - End Dragging' });
+    };
+
+
  return (
-  <UiContext.Provider value={{ ...state, handlerOpenMenu, handlerCloseMenu }}>
+  <UiContext.Provider
+   value={{
+    ...state,
+    handlerOpenMenu,
+    handlerCloseMenu,
+    setIsAddingEntry,
+
+    endDragging,
+    startDragging,
+   }}
+  >
    {children}
   </UiContext.Provider>
  );
