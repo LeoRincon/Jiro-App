@@ -1,16 +1,8 @@
 import { useContext } from 'react';
 import NextLink from 'next/link';
 
-import {
- AppBar,
- Box,
- IconButton,
- Link,
- Toolbar,
- Typography,
-} from '@mui/material';
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 import { UiContext } from '@/context/ui';
 
@@ -25,9 +17,9 @@ export const Navbar = () => {
      </IconButton>
 
      <NextLink href='/' passHref>
-      <Link underline='none' color='white'>
-       <Typography variant='h6'>OpenJira</Typography>
-      </Link>
+      <Typography variant='h6' color='white'>
+       OpenJira
+      </Typography>
      </NextLink>
     </Toolbar>
    </AppBar>
