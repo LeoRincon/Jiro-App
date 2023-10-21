@@ -1,6 +1,14 @@
 import { useContext } from 'react';
+import NextLink from 'next/link';
 
-import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
+import {
+ AppBar,
+ Box,
+ IconButton,
+ Link,
+ Toolbar,
+ Typography,
+} from '@mui/material';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
@@ -16,13 +24,11 @@ export const Navbar = () => {
       <MenuOutlinedIcon />
      </IconButton>
 
-     <Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
-      Jiro
-     </Typography>
-
-     <IconButton>
-      <DarkModeOutlinedIcon />
-     </IconButton>
+     <NextLink href='/' passHref>
+      <Link underline='none' color='white'>
+       <Typography variant='h6'>OpenJira</Typography>
+      </Link>
+     </NextLink>
     </Toolbar>
    </AppBar>
   </Box>
