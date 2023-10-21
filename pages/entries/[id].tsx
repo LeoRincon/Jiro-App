@@ -26,6 +26,7 @@ import { dbEntries } from '../../database';
 import { Layout } from '../../components/layouts';
 import { Entry, EntryStatus } from '../../typings';
 import { dateFunctions } from '../../utils';
+import { useRouter } from 'next/router';
 
 const validStatus: EntryStatus[] = ['pending', 'in-progress', 'finished'];
 
@@ -34,6 +35,7 @@ interface Props {
 }
 
 export const EntryPage: FC<Props> = ({ entry }) => {
+ const router = useRouter();
  const { updateEntry } = useContext(EntriesContext);
 
  const [inputValue, setInputValue] = useState(entry.description);
@@ -63,6 +65,13 @@ export const EntryPage: FC<Props> = ({ entry }) => {
   };
 
   updateEntry(updatedEntry, true);
+
+  router.push('/');
+ };
+
+ const onDeleteEntry = () => {
+  console.log('onDeleteEntry');
+  router.replace('/');
  };
 
  return (
@@ -81,14 +90,14 @@ export const EntryPage: FC<Props> = ({ entry }) => {
        <TextField
         sx={{ marginTop: 2, marginBottom: 1 }}
         fullWidth
-        placeholder='Nueva entrada'
+        placeholder='New entry'
         autoFocus
         multiline
-        label='Nueva entrada'
+        label='New entry'
         value={inputValue}
         onBlur={() => setTouched(true)}
         onChange={onInputValueChanged}
-        helperText={isNotValid && 'Ingrese un valor'}
+        helperText={isNotValid && 'typing any value'}
         error={isNotValid}
        />
 
@@ -123,6 +132,7 @@ export const EntryPage: FC<Props> = ({ entry }) => {
    </Grid>
 
    <IconButton
+    onClick={onDeleteEntry}
     sx={{
      position: 'fixed',
      bottom: 30,
